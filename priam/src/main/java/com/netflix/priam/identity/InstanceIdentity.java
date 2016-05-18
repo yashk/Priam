@@ -274,10 +274,15 @@ public class InstanceIdentity
     public List<String> getSeeds() throws UnknownHostException
     {
         populateRacMap();
+        logger.info("locMap " + locMap);
+        logger.info("Racs " + config.getRacs());
+
         List<String> seeds = new LinkedList<String>();
         // Handle single zone deployment
         if (config.getRacs().size() == 1)
         {
+            logger.info("Handle single zone deployment");
+
             // Return empty list if all nodes are not up
             if (membership.getRacMembershipSize() != locMap.get(myInstance.getRac()).size())
                 return seeds;
@@ -296,15 +301,23 @@ public class InstanceIdentity
         }
         for (String loc : locMap.keySet())
         {
-        		PriamInstance instance = Iterables.tryFind(locMap.get(loc), differentHostPredicate).orNull();
+            logger.info("loc " + loc);
+
+            PriamInstance instance = Iterables.tryFind(locMap.get(loc), differentHostPredicate).orNull();
         		if (instance != null && !isInstanceDummy(instance))
         		{
-        			if (config.isMultiDC())
-        			   seeds.add(instance.getHostIP());
-        			else
-        			   seeds.add(instance.getHostName());
+        			if (config.isMultiDC()) {
+                        logger.info("config.isMultiDC()? " + config.isMultiDC());
+
+                        seeds.add(instance.getHostIP());
+                    }
+        			else {
+                        seeds.add(instance.getHostName());
+                    }
         		}
         }
+        logger.info("seeds " + seeds);
+
         return seeds;
     }
     
