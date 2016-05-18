@@ -72,7 +72,7 @@ public class UpdateSecuritySettings extends Task
     public void execute()
     {
         // if seed dont execute.
-        int port = config.getSSLStoragePort();
+        int port = config.getStoragePort();
         List<String> acls = membership.listACL(port, port);
         List<PriamInstance> instances = factory.getAllIds(config.getAppName());
 
