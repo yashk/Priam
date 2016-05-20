@@ -35,13 +35,19 @@ public class S3FileSystemBase {
      */
     protected String getS3Endpoint(IConfiguration config)
     {
-    	 final String curRegion = config.getDC();
-         if("us-east-1".equalsIgnoreCase(curRegion) ||
+        final String curRegion = config.getDC();
+
+        logger.info("curRegion " + curRegion);
+
+        if("us-east-1".equalsIgnoreCase(curRegion) ||
             "us-west-1".equalsIgnoreCase(curRegion) ||
             "us-west-2".equalsIgnoreCase(curRegion)	|| 
             "eu-west-1".equalsIgnoreCase(curRegion) ||
-            "sa-east-1".equalsIgnoreCase(curRegion))
-             return config.getS3EndPoint();
+            "sa-east-1".equalsIgnoreCase(curRegion)) {
+            String s3EndPoint=  config.getS3EndPoint();
+            logger.info("s3EndPoint " + s3EndPoint);
+            return  s3EndPoint;
+        }
          
          throw new IllegalStateException("Unsupported region for this application: " + curRegion);
     }

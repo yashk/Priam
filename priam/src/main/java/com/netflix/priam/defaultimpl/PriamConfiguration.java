@@ -876,6 +876,8 @@ public class PriamConfiguration implements IConfiguration
     
     public String getS3EndPoint() {
     	String region = getDC();
+
+        logger.info("DC " + region);
     	
     	String s3Url = null;
     	
