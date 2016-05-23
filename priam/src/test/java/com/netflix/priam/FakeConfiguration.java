@@ -240,6 +240,14 @@ public class FakeConfiguration implements IConfiguration
         return null;
     }
 
+    /**
+     * @return returns Private IP
+     */
+    @Override
+    public String getLocalIP() {
+        return null;
+    }
+
     @Override
     public int getUploadThrottle()
     {

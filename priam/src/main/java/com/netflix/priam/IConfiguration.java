@@ -285,6 +285,12 @@ public interface IConfiguration
      */
     public String getHostIP();
 
+
+    /**
+     * @return returns Private IP
+     */
+    public String getLocalIP();
+
     /**
      * @return Bytes per second to throttle for backups
      */

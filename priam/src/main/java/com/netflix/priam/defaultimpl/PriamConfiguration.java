@@ -641,6 +641,14 @@ public class PriamConfiguration implements IConfiguration
         else return PUBLIC_IP;
     }
 
+    /**
+     * @return returns Private IP
+     */
+    @Override
+    public String getLocalIP() {
+        return LOCAL_IP;
+    }
+
     @Override
     public int getUploadThrottle()
     {
